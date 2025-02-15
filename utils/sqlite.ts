@@ -50,6 +50,20 @@ export const insertPrediction = (data: Omit<StrokePrediction, 'created_at'>) => 
       gender, smoking_status, residence, work_type, ever_married,
       physical_activity, prediction_result, risk_level
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ON CONFLICT(id) DO UPDATE SET
+      age = excluded.age,
+      hypertension = excluded.hypertension,
+      heart_disease = excluded.heart_disease,
+      avg_glucose_level = excluded.avg_glucose_level,
+      bmi = excluded.bmi,
+      gender = excluded.gender,
+      smoking_status = excluded.smoking_status,
+      residence = excluded.residence,
+      work_type = excluded.work_type,
+      ever_married = excluded.ever_married,
+      physical_activity = excluded.physical_activity,
+      prediction_result = excluded.prediction_result,
+      risk_level = excluded.risk_level
   `);
 
   return query.run(
