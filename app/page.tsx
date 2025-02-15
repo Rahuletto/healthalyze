@@ -25,7 +25,10 @@ export default function Home() {
           <div className='flex flex-col justify-center gap-6 font-classy max-w-[600px]'>
             <h1 className='text-6xl font-medium '>Your <span className='text-red'>Health</span>, Backed by AI.</h1>
             <p className='opacity-60'>Healthalyze is an AI-powered tool that assesses your stroke risk using deep learning. Enter your health details to get an instant probability score and AI-driven prevention advice</p>
-            <Link href="/dashboard" className='text-background px-6 py-2 font-semibold rounded-full font-sans text-xl w-fit mt-12 bg-foreground'>Check out</Link>
+            <div className='flex flex-row gap-2'>
+            <Link href="/dashboard" className='text-background px-6 py-3 font-semibold rounded-full font-sans text-xl w-fit mt-12 bg-foreground'>Analyze</Link>
+            <Link href="/metrics" className='text-foreground px-6 border border-foreground py-3 font-semibold rounded-full font-sans text-xl w-fit mt-12 bg-background'>Metrics</Link>
+            </div>
           </div>
           <img src="/hero.svg" alt="hero" className='h-screen' />          
         </main>
