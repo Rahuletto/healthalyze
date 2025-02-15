@@ -3,7 +3,7 @@ import { Database } from "bun:sqlite";
 const db = new Database("stroke_prediction.sqlite");
 
 export interface StrokePrediction {
-  id?: number;
+  id: string;
   age: number;
   hypertension: number;
   heart_disease: number;
@@ -23,7 +23,7 @@ export interface StrokePrediction {
 export const initializeDatabase = () => {
   db.run(`
     CREATE TABLE IF NOT EXISTS stroke_predictions (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id TEXT PRIMARY KEY,
       age REAL NOT NULL,
       hypertension INTEGER NOT NULL,
       heart_disease INTEGER NOT NULL,
@@ -42,16 +42,18 @@ export const initializeDatabase = () => {
   `);
 };
 
-export const insertPrediction = (data: Omit<StrokePrediction, 'id' | 'created_at'>) => {
+export const insertPrediction = (data: Omit<StrokePrediction, 'created_at'>) => {
+  initializeDatabase()
   const query = db.prepare(`
     INSERT INTO stroke_predictions (
-      age, hypertension, heart_disease, avg_glucose_level, bmi,
+      id, age, hypertension, heart_disease, avg_glucose_level, bmi,
       gender, smoking_status, residence, work_type, ever_married,
       physical_activity, prediction_result, risk_level
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
   return query.run(
+    data.id,
     data.age,
     data.hypertension,
     data.heart_disease,
@@ -76,21 +78,21 @@ export const getPredictions = (limit: number = 10) => {
   `).all(limit);
 };
 
-export const getPredictionById = (id: number) => {
+export const getPredictionById = (id: string) => {
   return db.prepare(`
     SELECT * FROM stroke_predictions 
     WHERE id = ?
   `).get(id);
 };
 
-export const deletePrediction = (id: number) => {
+export const deletePrediction = (id: string) => {
   return db.prepare(`
     DELETE FROM stroke_predictions 
     WHERE id = ?
   `).run(id);
 };
 
-export const updatePrediction = (id: number, data: Partial<StrokePrediction>) => {
+export const updatePrediction = (id: string, data: Partial<StrokePrediction>) => {
   const fields = Object.keys(data)
     .filter(key => key !== 'id' && key !== 'created_at')
     .map(key => `${key} = ?`)
