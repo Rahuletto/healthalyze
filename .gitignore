@@ -5,6 +5,11 @@
 /.pnp
 .pnp.js
 
+/api/.venv
+/api/model/cnn_tuning
+/api/model/lstm_tuning
+/api/model/saved_models
+
 # testing
 /coverage
 
