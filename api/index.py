@@ -16,8 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-ml_model = joblib.load("model/stroke_prediction_model.pkl")
-dl_model = tf.keras.models.load_model("model/saved_models/stroke_cnn_model.h5")
+ml_model = joblib.load("api/model/stroke_prediction_model.pkl")
+dl_model = tf.keras.models.load_model("api/model/saved_models/stroke_cnn_model.h5")
 
 class StrokeInput(BaseModel):
     age: float
@@ -58,7 +58,7 @@ def preprocess_input(data):
     
     ever_married = 1 if data.ever_married == "Yes" else 0
     
-    scaler = joblib.load("model/scaler.pkl")
+    scaler = joblib.load("api/model/scaler.pkl")
     num_features = np.array([[data.age, data.hypertension, data.heart_disease, data.avg_glucose_level, data.bmi]])
     num_features = scaler.transform(num_features)
     
