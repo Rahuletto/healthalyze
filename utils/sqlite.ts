@@ -1,3 +1,4 @@
+import { DataAnalysis } from "@/types/DataAnalysis";
 import { Database } from "bun:sqlite";
 
 const db = new Database("stroke_prediction.sqlite");
@@ -132,5 +133,11 @@ export const getStatistics = () => {
       FROM stroke_predictions 
       GROUP BY risk_level
     `).all(),
+    smokingStatusDistribution: db.prepare(`
+      SELECT smoking_status, COUNT(*) as count
+      FROM stroke_predictions
+      GROUP BY smoking_status
+    `).all(),
+    data: getPredictions()
   };
 };
