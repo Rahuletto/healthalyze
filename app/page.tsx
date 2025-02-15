@@ -20,7 +20,7 @@ export default function Home() {
           <UserButton />
         </SignedIn>
       </head>
-      <SignedOut>
+
         <main className="pl-32 flex justify-between">
           <div className='flex flex-col justify-center gap-6 font-classy max-w-[600px]'>
             <h1 className='text-6xl font-medium '>Your <span className='text-red'>Health</span>, Backed by AI.</h1>
@@ -29,7 +29,6 @@ export default function Home() {
           </div>
           <img src="/hero.svg" alt="hero" className='h-screen' />          
         </main>
-      </SignedOut>
     </>
   );
 }
