@@ -3,7 +3,7 @@
 Healthalyze is an AI-powered tool designed to assess your stroke risk using deep learning. With just a few inputs—such as age, blood pressure, glucose levels, and lifestyle habits—our advanced CNN model provides an accurate probability of stroke occurrence.
 
 ## Flowchart
-![image](/public/screenshot/flowchart.png)
+![image](/public/screenshots/flowchart.png)
 
 
 
@@ -28,8 +28,8 @@ This concurrently starts FastAPI and NextJS server together, tho you need to run
 
 ## Screenshots
 ![image](/public/screenshots/home.png)
-![image](/public/screenshot/risk.png)
-![image](/public/screenshot/graph.png)
+![image](/public/screenshots/risk.png)
+![image](/public/screenshots/graph.png)
 
 ## CNN Model
-![image](/public/screenshot/accuracy.png)
+![image](/public/screenshots/accuracy.png)
