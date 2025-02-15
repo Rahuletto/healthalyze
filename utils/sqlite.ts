@@ -14,7 +14,6 @@ export interface StrokePrediction {
   residence: string;
   work_type: string;
   ever_married: string;
-  education_level: string;
   physical_activity: string;
   prediction_result: number;
   risk_level: string;
@@ -35,7 +34,6 @@ export const initializeDatabase = () => {
       residence TEXT NOT NULL,
       work_type TEXT NOT NULL,
       ever_married TEXT NOT NULL,
-      education_level TEXT NOT NULL,
       physical_activity TEXT NOT NULL,
       prediction_result REAL NOT NULL,
       risk_level TEXT NOT NULL,
@@ -49,8 +47,8 @@ export const insertPrediction = (data: Omit<StrokePrediction, 'id' | 'created_at
     INSERT INTO stroke_predictions (
       age, hypertension, heart_disease, avg_glucose_level, bmi,
       gender, smoking_status, residence, work_type, ever_married,
-      education_level, physical_activity, prediction_result, risk_level
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      physical_activity, prediction_result, risk_level
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
   return query.run(
@@ -64,7 +62,6 @@ export const insertPrediction = (data: Omit<StrokePrediction, 'id' | 'created_at
     data.residence,
     data.work_type,
     data.ever_married,
-    data.education_level,
     data.physical_activity,
     data.prediction_result,
     data.risk_level
