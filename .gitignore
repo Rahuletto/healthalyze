@@ -9,7 +9,7 @@
 /api/model/cnn_tuning
 /api/model/lstm_tuning
 /api/model/saved_models
-
+stroke_prediction.sqlite
 # testing
 /coverage
 
