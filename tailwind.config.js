@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ['class'],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,13 +8,19 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        classy: ['var(--font-classy)'],
+        unbound: ['var(--font-unbound)'],
+      },
       colors: {
         'primary': '#0e0e0e',
-        'secondary': '#000000',
-        'tertiary': '#000000',
-        'quaternary': '#000000',
-        'quinary': '#000000',
-        'senary': '#000000',
+        'red': '#FA454D',
+        "dark-red": "#491416",
+        "light-red": "#FFBBBC",
+        "deep-red": "#2F080A",
+        "background": "rgb(var(--background-end-rgb))",
+        "foreground": "rgb(var(--foreground-rgb))",
+        "light": "rgb(var(--light))",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

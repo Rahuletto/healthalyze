@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Unbounded:wght@200..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 11, 11, 11;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-classy: 'Playfair Display', serif;
+  --font-unbound: 'Unbounded', system-ui;
+  --red: #FA454D;
+  --dark-red: #491416;
+  --light-red: #FFBBBC;
+  --deep-red: #2F080A;
+  --light: 214, 219, 220;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,7 +21,20 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --font-classy: 'Playfair Display', serif;
+    --font-unbound: 'Unbounded', system-ui;
+    --red: #FA454D;
+    --dark-red: #491416;
+    --light: 16 16 16;
+
+    --light-red: #FFBBBC;
+    --deep-red: #2F080A;
   }
+}
+
+.gradiented {
+  background: rgb(var(--foreground-rgb));
+  background: linear-gradient(125deg, rgb(var(--background-start-rgb)), rgba(47, 8, 10,0.3));
 }
 
 body {
