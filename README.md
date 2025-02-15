@@ -15,14 +15,11 @@ pip install -r api/requirements.txt
 
 2. Run frontend and backend
 ```
-bun run dev
+bun --bun run dev
 ```
 
-or 
-
-```
-npm run dev
-```
+> [!WARNING]
+> Bun is required to run as this project uses `bun:sqlite` package from bun. So make sure you run with bun.
 
 This concurrently starts FastAPI and NextJS server together, tho you need to run the saved CNN model first.
 
