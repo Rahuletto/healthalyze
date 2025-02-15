@@ -4,8 +4,18 @@ import joblib
 import tensorflow as tf
 import numpy as np
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Configure CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 ml_model = joblib.load("model/stroke_prediction_model.pkl")
 dl_model = tf.keras.models.load_model("model/saved_models/stroke_cnn_model.h5")
@@ -65,7 +75,7 @@ def preprocess_input(data):
     
     return final_features
 
-@app.post("/api/py/predict")
+@app.post("/api/predict")
 def predict_stroke(data: StrokeInput):
     input_data = preprocess_input(data)
     
