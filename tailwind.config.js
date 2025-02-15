@@ -14,6 +14,8 @@ module.exports = {
       },
       colors: {
         'primary': '#0e0e0e',
+        "card": "#000000",
+        "cardborder": "#27272A",
         'red': '#FA454D',
         "dark-red": "#491416",
         "light-red": "#FFBBBC",
