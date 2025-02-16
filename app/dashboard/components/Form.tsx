@@ -99,7 +99,7 @@ export default function AnimatedStrokePredictionForm({ data }: { data: any }) {
       const heightInMeters = values.height / 100
       const bmi = values.weight / (heightInMeters * heightInMeters)
 
-      const response = await fetch("http://localhost:8000/api/predict", {
+      const response = await fetch("/api/py/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

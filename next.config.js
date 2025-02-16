@@ -4,6 +4,7 @@ const nextConfig = {
     config.externals.push('bun:sqlite');
     return config;
   },
+  distDir: 'build',
   rewrites: async () => {
     return [
       {

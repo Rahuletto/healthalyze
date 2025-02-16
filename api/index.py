@@ -74,7 +74,7 @@ def preprocess_input(data):
     
     return final_features
 
-@app.post("/api/predict")
+@app.post("/api/py/predict")
 def predict_stroke(data: StrokeInput):
     input_data = preprocess_input(data)
     
