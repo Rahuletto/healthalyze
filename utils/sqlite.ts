@@ -86,6 +86,7 @@ export const insertPrediction = (data: Omit<StrokePrediction, 'created_at'>) => 
 };
 
 export const getPredictions = (limit: number = 10) => {
+  initializeDatabase()
   return db.prepare(`
     SELECT * FROM stroke_predictions 
     ORDER BY created_at DESC 
@@ -94,6 +95,7 @@ export const getPredictions = (limit: number = 10) => {
 };
 
 export const getPredictionById = (id: string) => {
+  initializeDatabase()
   return db.prepare(`
     SELECT * FROM stroke_predictions 
     WHERE id = ?
@@ -101,6 +103,7 @@ export const getPredictionById = (id: string) => {
 };
 
 export const deletePrediction = (id: string) => {
+  initializeDatabase()
   return db.prepare(`
     DELETE FROM stroke_predictions 
     WHERE id = ?
@@ -108,6 +111,7 @@ export const deletePrediction = (id: string) => {
 };
 
 export const updatePrediction = (id: string, data: Partial<StrokePrediction>) => {
+  initializeDatabase()
   const fields = Object.keys(data)
     .filter(key => key !== 'id' && key !== 'created_at')
     .map(key => `${key} = ?`)
@@ -125,6 +129,7 @@ export const updatePrediction = (id: string, data: Partial<StrokePrediction>) =>
 };
 
 export const getStatistics = () => {
+  initializeDatabase()
   return {
     totalPredictions: db.prepare('SELECT COUNT(*) as count FROM stroke_predictions').get(),
     averageAge: db.prepare('SELECT AVG(age) as avg FROM stroke_predictions').get(),
