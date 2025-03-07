@@ -30,3 +30,5 @@ This concurrently starts FastAPI and NextJS server together, tho you need to run
 
 ## CNN Model
 ![image](/public/screenshots/accuracy.png)
+
+
